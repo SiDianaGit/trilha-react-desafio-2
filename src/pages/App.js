@@ -16,7 +16,7 @@ function App() {
 
   const handleSearchRepo = async () => {
 
-    const {data} = await api.get(`repos/${currentRepo}`)
+     const {data} = await api.get(`/repos/${currentRepo}`)
 
     if(data.id){
 
@@ -36,7 +36,9 @@ function App() {
   const handleRemoveRepo = (id) => {
     console.log('Removendo registro', id);
 
-    // utilizar filter.
+    // Filtra os repositórios, mantendo apenas aqueles com IDs diferentes do ID a ser removido
+    const updatedRepos = repos.filter(repo => repo.id !== id);
+    setRepos(updatedRepos);
   }
 
 
